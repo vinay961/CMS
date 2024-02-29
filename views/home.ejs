@@ -1,28 +1,85 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <%- include('./partials/head') %>
-    <title>Homepage</title>
-  </head>
-  <body>
-    <%- include('./partials/nav') %>
 
-    <div class="container mt-3">
-      <div class="row row-cols-4">
-        <% blogs.forEach(blog => { %>
-        <div class="col">
-          <div class="card col" style="width: 18rem">
-            <img src="<%= blog.coverImageURL %>" class="card-img-top" />
-            <div class="card-body">
-              <h5 class="card-title"><%= blog.title %></h5>
-              <a href="/blog/<%= blog._id %>" class="btn btn-primary">View</a>
+<head>
+  <%- include('./partials/head') %>
+  <title>Homepage</title>
+  <style>
+    body {
+      background-color: #f8f9fa;
+    }
+
+    .jumbotron {
+      background-color: #ffffff; 
+      padding: 20px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+    }
+
+    .card {
+      background-color: #ffffff;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+    }
+
+    .notice-card {
+      background-color: #ffeeba;
+      border: 1px solid #ffc107; 
+      border-radius: 10px;
+    }
+    .copyright-text{
+      position: absolute;
+      bottom: 5px;
+      right: 100px;
+    }
+  </style>
+</head>
+
+<body class="bg-light">
+  <%- include('./partials/nav') %>
+
+  <div class="container mt-5">
+    <div class="jumbotron text-center">
+      <h1 class="display-4">Welcome to Courier Management</h1>
+      <p class="lead">Efficiently manage your courier deliveries.</p>
+    </div>
+  </div>
+
+  <% if (locals.user) { %>
+    <div class="container mt-4">
+      <div class="row row-cols-1 row-cols-md-3 g-4">
+        <% if (blogs.length > 0) { %>
+          <% blogs.forEach(blog => { %>
+            <div class="col">
+              <div class="card h-100">
+                <div class="card-body">
+                  <h5 class="card-title"><%= blog.title %></h5>
+                  <p class="card-text">Details about the courier...</p>
+                  <a href="/blog/<%= blog._id %>" class="btn btn-primary">View Details</a>
+                </div>
+              </div>
+            </div>
+          <% }) %>
+        <% } else { %>
+          <div class="col">
+            <div class="card notice-card">
+              <div class="card-body">
+                <h5 class="card-title">No Orders Yet</h5>
+                <p class="card-text">You haven't placed any orders. Place your first order now!</p>
+                <a href="http://localhost:8000/blog/add-new" class="btn btn-warning">Place Order</a>
+              </div>
             </div>
           </div>
-        </div>
-        <% }) %>
+        <% } %>
       </div>
     </div>
+  <% } %>
 
-    <%- include('./partials/scripts') %>
-  </body>
+  <% if (!locals.user) { %>
+    <div class="container text-center text-danger copyright-text">
+      &copy; 2023 velocityCourier. All Rights Reserved.
+    </div>
+  <% } %>
+
+  <%- include('./partials/scripts') %>
+</body>
+
 </html>

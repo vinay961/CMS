@@ -38,22 +38,26 @@ router.get("/:id", async (req, res) => {
   });
 });
 
-router.post("/comment/:blogId", async (req, res) => {
+router.post("/:id", async (req, res) => {
   await Comment.create({
-    content: req.body.content,
+    content:res.body.content,
     blogId: req.params.blogId,
-    createdBy: req.user._id,
+    createdBy: req.user._id
   });
   return res.redirect(`/blog/${req.params.blogId}`);
 });
 
-router.post("/", upload.single("coverImage"), async (req, res) => {
-  const { title, body } = req.body;
+router.post("/", upload.single("SenderImage"), async (req, res) => {
+  const { SenderDetails,PhNumofSender,ageofSender,ReceiverDetails,PhNumofReceiver,ageofReceiver } = req.body;
   const blog = await Blog.create({
-    body,
-    title,
+    SenderDetails,
+    PhNumofSender,
+    ageofSender,
+    ReceiverDetails,
+    PhNumofReceiver,
+    ageofReceiver,
     createdBy: req.user._id,
-    coverImageURL: `/uploads/${req.file.filename}`,
+    SenderImage: `/uploads/${req.file.filename}`,
   });
   return res.redirect(`/blog/${blog._id}`);
 });

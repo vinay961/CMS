@@ -1,43 +1,47 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <%- include('./partials/head') %>
-    <title>Signin</title>
-  </head>
-  <body>
-    <%- include('./partials/nav') %>
 
-    <div class="container mt-4">
-      <form action="/user/signin" method="post">
-        <div class="mb-3">
-          <label for="exampleInputEmail1" class="form-label"
-            >Email address</label
-          >
-          <input
-            type="email"
-            name="email"
-            class="form-control"
-            id="exampleInputEmail1"
-            aria-describedby="emailHelp"
-          />
-          <div id="emailHelp" class="form-text">
-            We'll never share your email with anyone else.
+<head>
+  <%- include('./partials/head') %>
+  <title>Signin</title>
+  <style>
+    body {
+      
+    }
+
+    .card {
+      background-color: #ffffff;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+  </style>
+</head>
+
+<body>
+  <%- include('./partials/nav') %>
+
+  <div class="container mt-5">
+    <div class="d-flex justify-content-center align-items-center min-vh-90">
+      <div class="card p-4" style="width: 400px;">
+        <form action="/user/signin" method="post">
+          <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">Email address</label>
+            <input type="email" name="email" class="form-control card border-success" id="exampleInputEmail1" aria-describedby="emailHelp" />
+            <div id="emailHelp" class="form-text">
+              We'll never share your email with anyone else.
+            </div>
           </div>
-        </div>
-        <div class="mb-3">
-          <label for="exampleInputPassword1" class="form-label">Password</label>
-          <input
-            name="password"
-            type="password"
-            class="form-control"
-            id="exampleInputPassword1"
-          />
-        </div>
+          <div class="mb-3 ">
+            <label for="exampleInputPassword1" class="form-label">Password</label>
+            <input name="password" type="password" class="form-control card border-success" id="exampleInputPassword1" />
+          </div>
 
-        <button type="submit" class="btn btn-primary">Submit</button>
-      </form>
+          <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+      </div>
     </div>
+  </div>
 
-    <%- include('./partials/scripts') %>
-  </body>
+  <%- include('./partials/scripts') %>
+</body>
+
 </html>

@@ -1,55 +1,45 @@
-<nav
-  class="navbar navbar-expand-lg bg-body-tertiary bg-dark"
-  data-bs-theme="dark"
->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
   <div class="container-fluid">
-    <a class="navbar-brand" href="#">Blogify</a>
-    <button
-      class="navbar-toggler"
-      type="button"
-      data-bs-toggle="collapse"
-      data-bs-target="#navbarNavDropdown"
-      aria-controls="navbarNavDropdown"
-      aria-expanded="false"
-      aria-label="Toggle navigation"
-    >
+    <a class="navbar-brand" href="#">VelocityCourier</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
-    <div class="collapse navbar-collapse" id="navbarNavDropdown">
-      <ul class="navbar-nav">
+    <div class="collapse navbar-collapse nav-tab" id="navbarNavDropdown">
+      <ul class="navbar-nav ms-auto">
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#">Home</a>
+          <a class="nav-link" href="http://localhost:8000/">Home</a>
         </li>
         <% if (locals.user) { %>
-        <li class="nav-item">
-          <a class="nav-link" href="/blog/add-new">Add Blog</a>
-        </li>
-        <li class="nav-item dropdown">
-          <a
-            class="nav-link dropdown-toggle"
-            href="#"
-            role="button"
-            data-bs-toggle="dropdown"
-            aria-expanded="false"
-          >
-            Vinay Rai
-          </a>
-          <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="/user/logout">Logout</a></li>
-          </ul>
-        </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/blog/add-new">Place Order</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              <%= JSON.stringify(locals.user.fullName) %>
+            </a>
+            <ul class="dropdown-menu dropdown-menu-end bg-dark">
+              <li><a class="dropdown-item text-light" href="/user/logout">Logout</a></li>
+            </ul>
+          </li>
         <% } else {%>
-        <li class="nav-item">
-          <a class="nav-link" href="/user/signup">Create Account</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="/user/signin">Signin</a>
-        </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/user/signup">Create Account</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/user/signin">Sign In</a>
+          </li>
         <% } %>
       </ul>
     </div>
   </div>
 </nav>
+
+<style>
+  .dropdown-menu a:hover {
+    background-color: grey;
+    color: inherit !important;
+  }
+</style>
 
 <% if (locals.error) { %>
 <div class="container mt-4">

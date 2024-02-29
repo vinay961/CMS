@@ -1,44 +1,119 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+<head>
     <%- include('./partials/head') %>
-    <title>Add New Blog</title>
-  </head>
-  <body>
-    <%- include('./partials/nav') %>
+    <title>Place Order</title>
+</head>
+<body>
+<%- include('./partials/nav') %>
 
-    <div class="container mt-3">
-      <form action="/blog" method="post" enctype="multipart/form-data">
-        <div class="mb-3">
-          <label for="coverImage" class="form-label">Cover Image</label>
-          <input
-            type="file"
-            class="form-control"
-            id="coverImage"
-            name="coverImage"
-            aria-describedby="coverImage"
-          />
-        </div>
-        <div class="mb-3">
-          <label for="title" class="form-label">Title</label>
-          <input
-            type="text"
-            class="form-control"
-            id="title"
-            name="title"
-            aria-describedby="title"
-          />
-        </div>
-        <div class="mb-3">
-          <label for="body">Body</label>
-          <textarea name="body" class="form-control" id="body"></textarea>
-        </div>
-        <div class="mb-3">
-          <button class="btn btn-primary">Submit</button>
-        </div>
-      </form>
-    </div>
+<div class="container mt-3">
+    <form action="/blog" method="post" enctype="multipart/form-data">
+        <div class="row">
+            <!-- Sender Section -->
+            <div class="col-md-6">
+                <h4 class="mb-3">Sender Information</h4>
 
-    <%- include('./partials/scripts') %>
-  </body>
+                <div class="mb-3">
+                    <label for="coverImageSender" class="form-label">Sender Image</label>
+                    <input
+                        type="file"
+                        class="form-control p-3 bg-info bg-opacity-10 border border-info border-start-0 rounded-end"
+                        id="coverImageSender"
+                        name="SenderImage"
+                        aria-describedby="coverImageSender"
+                    />
+                </div>
+                <div class="mb-3">
+                    <label for="titleSender" class="form-label">Sender Details</label>
+                    <input
+                        placeholder="Such as Name... Address..."
+                        type="text"
+                        class="form-control p-3 bg-info bg-opacity-10 border border-info border-start-0 rounded-end"
+                        id="titleSender"
+                        name="SenderDetails"
+                        aria-describedby="titleSender"
+                    />
+                </div>
+                <div class="mb-3">
+                    <label for="phoneSender" class="form-label">Phone Number</label>
+                    <input
+                        type="tel"
+                        placeholder="0123-456-789"
+                        class="form-control p-3 bg-info bg-opacity-10 border border-info border-start-0 rounded-end"
+                        id="phoneSender"
+                        name="PhNumofSender"
+                        aria-describedby="phoneSender"
+                    />
+                </div>
+                <div class="mb-3">
+                    <label for="ageSender" class="form-label">Age</label>
+                    <input
+                        type="date"
+                        placeholder="DD/MM/YYYY"
+                        class="form-control p-3 bg-info bg-opacity-10 border border-info border-start-0 rounded-end"
+                        id="ageSender"
+                        name="ageofSender"
+                        aria-describedby="ageSender"
+                    />
+                </div>
+            </div>
+
+            <!-- Receiver Section -->
+            <div class="col-md-6">
+                <h4 class="mb-3">Receiver Information</h4>
+
+                <div class="mb-3">
+                    <label for="coverImageReceiver" class="form-label">Receiver Image</label>
+                    <input
+                        type="file"
+                        class="form-control p-3 bg-danger bg-opacity-10 border border-info border-start-0 rounded-end"
+                        id="coverImageReceiver"
+                        name="ReceiverImage"
+                        aria-describedby="coverImageReceiver"
+                    />
+                </div>
+                <div class="mb-3">
+                    <label for="titleReceiver" class="form-label">Receiver Details</label>
+                    <input
+                        placeholder="Such as Name... Address..."
+                        type="text"
+                        class="form-control p-3 bg-danger bg-opacity-10 border border-info border-start-0 rounded-end"
+                        id="titleReceiver"
+                        name="ReceiverDetails"
+                        aria-describedby="titleReceiver"
+                    />
+                </div>
+                <div class="mb-3">
+                    <label for="phoneReceiver" class="form-label">Phone Number</label>
+                    <input
+                        type="tel"
+                        placeholder="0123-456-789"
+                        class="form-control p-3 bg-danger bg-opacity-10 border border-info border-start-0 rounded-end"
+                        id="phoneReceiver"
+                        name="PhNumofReceiver"
+                        aria-describedby="phoneReceiver"
+                    />
+                </div>
+                <div class="mb-3">
+                    <label for="ageReceiver" class="form-label">Age</label>
+                    <input
+                        type="date"
+                        placeholder="DD/MM/YYYY"
+                        class="form-control p-3 bg-danger bg-opacity-10 border border-info border-start-0 rounded-end"
+                        id="ageReceiver"
+                        name="ageofReceiver"
+                        aria-describedby="ageReceiver"
+                    />
+                </div>
+            </div>
+        </div>
+
+        <hr class="border border-primary border-3 opacity-75">
+        <button class="btn btn-primary">Submit</button>
+    </form>
+</div>
+
+<%- include('./partials/scripts') %>
+</body>
 </html>
